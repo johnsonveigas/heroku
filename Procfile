@@ -1,1 +1,0 @@
-web: gunicorn johnson1:app
