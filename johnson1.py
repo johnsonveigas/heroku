@@ -54,7 +54,22 @@ def process_image(height,width):
     return jsonify(
     {'Original Size':[img.width,img.height],'msg': 'success', 'size': [new_image.width, new_image.height],'url':imageurl })
    
+@app.route("/linkpreview=<path:url>")
+def linkpreview(url):
 
+
+	
+	preview=link_preview(url)
+	
+	#print("title:", preview.title)
+	'''print("description:", preview.description)
+	print("image:", preview.image)
+	print("force_title:", preview.force_title)
+	print("absolute_image:", preview.absolute_image) '''
+	return jsonify( {'success':'true','title': preview.title, 'description': preview.description,'imgurl':preview.image,'url':url })
+    
+	
+	
 
 if __name__ == "__main__":
     app.run(debug=True)
